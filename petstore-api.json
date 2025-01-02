@@ -1,0 +1,4267 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pet Store API",
+    "version": "0.1.0",
+    "description": "My awesome pet store API"
+  },
+  "tags": [
+    {
+      "name": "user",
+      "description": "User operations"
+    },
+    {
+      "name": "pet",
+      "description": "Pet operations"
+    },
+    {
+      "name": "order",
+      "description": "Order operations"
+    }
+  ],
+  "paths": {
+    "/api/user": {
+      "get": {
+        "operationId": "list-User",
+        "description": "List \"User\" resources",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[orders]",
+            "required": false,
+            "description": "Equality filter for \"orders\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-User",
+        "description": "Create a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "operationId": "fetch-User",
+        "description": "Fetch a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-User-put",
+        "description": "Update a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-User-patch",
+        "description": "Update a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-User",
+        "description": "Delete a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}/orders": {
+      "get": {
+        "operationId": "fetch-User-related-orders",
+        "description": "Fetch the related \"orders\" resource for \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[orders]",
+            "required": false,
+            "description": "Equality filter for \"orders\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}/relationships/orders": {
+      "get": {
+        "operationId": "fetch-User-relationship-orders",
+        "description": "Fetch the \"orders\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[orders]",
+            "required": false,
+            "description": "Equality filter for \"orders\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-User-relationship-orders-put",
+        "description": "Update \"orders\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-User-relationship-orders-patch",
+        "description": "Update \"orders\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-User-relationship-orders",
+        "description": "Create new \"orders\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pet": {
+      "get": {
+        "operationId": "list-Pet",
+        "description": "List \"Pet\" resources",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[category]",
+            "required": false,
+            "description": "Equality filter for \"category\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[category$contains]",
+            "required": false,
+            "description": "String contains filter for \"category\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[category$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"category\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[category$search]",
+            "required": false,
+            "description": "String full-text search filter for \"category\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[category$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"category\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[category$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"category\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[order]",
+            "required": false,
+            "description": "Equality filter for \"order\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-Pet",
+        "description": "Create a \"Pet\" resource",
+        "tags": [
+          "pet"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PetCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pet/{id}": {
+      "get": {
+        "operationId": "fetch-Pet",
+        "description": "Fetch a \"Pet\" resource",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "update-Pet-put",
+        "description": "Update a \"Pet\" resource",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PetUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Pet-patch",
+        "description": "Update a \"Pet\" resource",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PetUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-Pet",
+        "description": "Delete a \"Pet\" resource",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pet/{id}/order": {
+      "get": {
+        "operationId": "fetch-Pet-related-order",
+        "description": "Fetch the related \"order\" resource for \"Pet\"",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pet/{id}/relationships/order": {
+      "get": {
+        "operationId": "fetch-Pet-relationship-order",
+        "description": "Fetch the \"order\" relationships for a \"Pet\"",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "update-Pet-relationship-order-put",
+        "description": "Update \"order\" relationship for a \"Pet\"",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Pet-relationship-order-patch",
+        "description": "Update \"order\" relationship for a \"Pet\"",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order": {
+      "get": {
+        "operationId": "list-Order",
+        "description": "List \"Order\" resources",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[pets]",
+            "required": false,
+            "description": "Equality filter for \"pets\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-Order",
+        "description": "Create a \"Order\" resource",
+        "tags": [
+          "order"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/{id}": {
+      "get": {
+        "operationId": "fetch-Order",
+        "description": "Fetch a \"Order\" resource",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "update-Order-put",
+        "description": "Update a \"Order\" resource",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Order-patch",
+        "description": "Update a \"Order\" resource",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-Order",
+        "description": "Delete a \"Order\" resource",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/{id}/pets": {
+      "get": {
+        "operationId": "fetch-Order-related-pets",
+        "description": "Fetch the related \"pets\" resource for \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[pets]",
+            "required": false,
+            "description": "Equality filter for \"pets\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/{id}/relationships/pets": {
+      "get": {
+        "operationId": "fetch-Order-relationship-pets",
+        "description": "Fetch the \"pets\" relationships for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[pets]",
+            "required": false,
+            "description": "Equality filter for \"pets\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "update-Order-relationship-pets-put",
+        "description": "Update \"pets\" relationships for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Order-relationship-pets-patch",
+        "description": "Update \"pets\" relationships for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-Order-relationship-pets",
+        "description": "Create new \"pets\" relationships for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/{id}/user": {
+      "get": {
+        "operationId": "fetch-Order-related-user",
+        "description": "Fetch the related \"user\" resource for \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/order/{id}/relationships/user": {
+      "get": {
+        "operationId": "fetch-Order-relationship-user",
+        "description": "Fetch the \"user\" relationships for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "update-Order-relationship-user-put",
+        "description": "Update \"user\" relationship for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Order-relationship-user-patch",
+        "description": "Update \"user\" relationship for a \"Order\"",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "_jsonapi": {
+        "type": "object",
+        "description": "An object describing the server’s implementation",
+        "required": [
+          "version"
+        ],
+        "properties": {
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "_meta": {
+        "type": "object",
+        "description": "Meta information about the request or response",
+        "properties": {
+          "serialization": {
+            "description": "Superjson serialization metadata"
+          }
+        },
+        "additionalProperties": true
+      },
+      "_resourceIdentifier": {
+        "type": "object",
+        "description": "Identifier for a resource",
+        "required": [
+          "type",
+          "id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Resource type"
+          },
+          "id": {
+            "type": "string",
+            "description": "Resource id"
+          }
+        }
+      },
+      "_resource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_resourceIdentifier"
+          },
+          {
+            "type": "object",
+            "description": "A resource with attributes and relationships",
+            "properties": {
+              "attributes": {
+                "type": "object",
+                "description": "Resource attributes"
+              },
+              "relationships": {
+                "type": "object",
+                "description": "Resource relationships"
+              }
+            }
+          }
+        ]
+      },
+      "_links": {
+        "type": "object",
+        "required": [
+          "self"
+        ],
+        "description": "Links related to the resource",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Link for refetching the curent results"
+          }
+        }
+      },
+      "_pagination": {
+        "type": "object",
+        "description": "Pagination information",
+        "required": [
+          "first",
+          "last",
+          "prev",
+          "next"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "description": "Link to the first page",
+            "nullable": true
+          },
+          "last": {
+            "type": "string",
+            "description": "Link to the last page",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "description": "Link to the previous page",
+            "nullable": true
+          },
+          "next": {
+            "type": "string",
+            "description": "Link to the next page",
+            "nullable": true
+          }
+        }
+      },
+      "_errors": {
+        "type": "array",
+        "description": "An array of error objects",
+        "items": {
+          "type": "object",
+          "required": [
+            "status",
+            "code"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "description": "HTTP status"
+            },
+            "code": {
+              "type": "string",
+              "description": "Error code"
+            },
+            "prismaCode": {
+              "type": "string",
+              "description": "Prisma error code if the error is thrown by Prisma"
+            },
+            "title": {
+              "type": "string",
+              "description": "Error title"
+            },
+            "detail": {
+              "type": "string",
+              "description": "Error detail"
+            },
+            "reason": {
+              "type": "string",
+              "description": "Detailed error reason"
+            },
+            "zodErrors": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Zod validation errors if the error is due to data validation failure"
+            }
+          }
+        }
+      },
+      "_errorResponse": {
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "description": "An error response",
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/_errors"
+          }
+        }
+      },
+      "_relationLinks": {
+        "type": "object",
+        "required": [
+          "self",
+          "related"
+        ],
+        "description": "Links related to a relationship",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Link for fetching this relationship"
+          },
+          "related": {
+            "type": "string",
+            "description": "Link for fetching the resource represented by this relationship"
+          }
+        }
+      },
+      "_toOneRelationship": {
+        "type": "object",
+        "description": "A to-one relationship",
+        "properties": {
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_resourceIdentifier"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "_toOneRelationshipWithLinks": {
+        "type": "object",
+        "required": [
+          "links",
+          "data"
+        ],
+        "description": "A to-one relationship with links",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/_relationLinks"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_resourceIdentifier"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "_toManyRelationship": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "description": "A to-many relationship",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_toManyRelationshipWithLinks": {
+        "type": "object",
+        "required": [
+          "links",
+          "data"
+        ],
+        "description": "A to-many relationship with links",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/_pagedRelationLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_pagedRelationLinks": {
+        "description": "Relationship links with pagination information",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_pagination"
+          },
+          {
+            "$ref": "#/components/schemas/_relationLinks"
+          }
+        ]
+      },
+      "_toManyRelationshipRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "description": "Input for manipulating a to-many relationship",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_toOneRelationshipRequest": {
+        "description": "Input for manipulating a to-one relationship",
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/_resourceIdentifier"
+          }
+        },
+        "nullable": true
+      },
+      "_toManyRelationshipResponse": {
+        "description": "Response for a to-many relationship",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "jsonapi": {
+                "$ref": "#/components/schemas/_jsonapi"
+              }
+            }
+          }
+        ]
+      },
+      "_toOneRelationshipResponse": {
+        "description": "Response for a to-one relationship",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "jsonapi": {
+                "$ref": "#/components/schemas/_jsonapi"
+              }
+            }
+          }
+        ]
+      },
+      "User": {
+        "type": "object",
+        "description": "The \"User\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "required": [
+              "email",
+              "password"
+            ],
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "orders": {
+                "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "UserCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"User\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"User\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "orders": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "UserUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"User\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"User\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "orders": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "UserResponse": {
+        "type": "object",
+        "description": "Response for a \"User\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "orders": {
+                        "$ref": "#/components/schemas/_toManyRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "UserListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"User\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/User"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "orders": {
+                          "$ref": "#/components/schemas/_toManyRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      },
+      "Pet": {
+        "type": "object",
+        "description": "The \"Pet\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "required": [
+              "createdAt",
+              "updatedAt",
+              "name",
+              "category",
+              "orderId"
+            ],
+            "properties": {
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "orderId": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "PetCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Pet\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Pet\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "updatedAt",
+                  "name",
+                  "category"
+                ],
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "order": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "PetUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Pet\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Pet\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "order": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "PetResponse": {
+        "type": "object",
+        "description": "Response for a \"Pet\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Pet"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "order": {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "PetListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Pet\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Pet"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "order": {
+                          "$ref": "#/components/schemas/_toOneRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "description": "The \"Order\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "required": [
+              "createdAt",
+              "updatedAt",
+              "userId"
+            ],
+            "properties": {
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "userId": {
+                "type": "string"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "pets": {
+                "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+              },
+              "user": {
+                "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "OrderCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Order\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Order\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "updatedAt"
+                ],
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "pets": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  },
+                  "user": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "OrderUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Order\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Order\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "pets": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  },
+                  "user": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "OrderResponse": {
+        "type": "object",
+        "description": "Response for a \"Order\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Order"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "pets": {
+                        "$ref": "#/components/schemas/_toManyRelationship"
+                      },
+                      "user": {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "OrderListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Order\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Order"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "pets": {
+                          "$ref": "#/components/schemas/_toManyRelationship"
+                        },
+                        "user": {
+                          "$ref": "#/components/schemas/_toOneRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "description": "The resource id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "include": {
+        "name": "include",
+        "in": "query",
+        "description": "Relationships to include",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "sort": {
+        "name": "sort",
+        "in": "query",
+        "description": "Fields to sort by",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "page-offset": {
+        "name": "page[offset]",
+        "in": "query",
+        "description": "Offset for pagination",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "page-limit": {
+        "name": "page[limit]",
+        "in": "query",
+        "description": "Limit for pagination",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "securitySchemes": {
+      "myBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "myBearer": []
+    }
+  ]
+}
